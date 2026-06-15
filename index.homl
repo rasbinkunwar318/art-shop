@@ -1,0 +1,1226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sostika Collection — Paintings & Handmade Crafts</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ivory: #FAF8F4;
+    --sand: #EDE8DF;
+    --clay: #C4A882;
+    --umber: #7A5C3F;
+    --bark: #3D2B1A;
+    --sage: #A8B5A0;
+    --fog: #D6D0C8;
+    --white: #FFFFFF;
+    --serif: 'Cormorant Garamond', Georgia, serif;
+    --sans: 'Jost', system-ui, sans-serif;
+    --radius: 4px;
+    --cart-w: 380px;
+    --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--sans);
+    background: var(--ivory);
+    color: var(--bark);
+    font-size: 16px;
+    line-height: 1.7;
+    font-weight: 300;
+    overflow-x: hidden;
+  }
+
+  /* ── HEADER ── */
+  header {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    background: rgba(250,248,244,0.92);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--fog);
+    padding: 0 2rem;
+    height: 68px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .logo {
+    font-family: var(--serif);
+    font-size: 1.5rem;
+    font-weight: 400;
+    letter-spacing: 0.02em;
+    color: var(--bark);
+    text-decoration: none;
+  }
+  .logo span { color: var(--clay); font-style: italic; }
+
+  nav { display: flex; align-items: center; gap: 2rem; }
+
+  nav a {
+    font-size: 0.8rem;
+    font-weight: 400;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--umber);
+    text-decoration: none;
+    transition: color var(--transition);
+  }
+  nav a:hover { color: var(--bark); }
+
+  .cart-btn {
+    background: none;
+    border: 1px solid var(--fog);
+    border-radius: var(--radius);
+    padding: 0.45rem 1rem;
+    cursor: pointer;
+    font-family: var(--sans);
+    font-size: 0.8rem;
+    font-weight: 400;
+    letter-spacing: 0.1em;
+    color: var(--umber);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all var(--transition);
+  }
+  .cart-btn:hover { border-color: var(--clay); color: var(--bark); }
+
+  .cart-count {
+    background: var(--clay);
+    color: var(--white);
+    border-radius: 50%;
+    width: 18px;
+    height: 18px;
+    font-size: 0.65rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    display: none;
+  }
+  .cart-count.visible { display: inline-flex; }
+
+  .nav-hamburger { display: none; background: none; border: none; cursor: pointer; }
+  .nav-hamburger span {
+    display: block;
+    width: 22px;
+    height: 1.5px;
+    background: var(--bark);
+    margin: 5px 0;
+    transition: all var(--transition);
+  }
+
+  /* ── HERO ── */
+  #home {
+    padding-top: 68px;
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+  }
+
+  .hero-text {
+    padding: 6rem 4rem 6rem 6rem;
+  }
+
+  .hero-eyebrow {
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--clay);
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-title {
+    font-family: var(--serif);
+    font-size: clamp(3rem, 5vw, 5rem);
+    font-weight: 300;
+    line-height: 1.1;
+    color: var(--bark);
+    margin-bottom: 1.5rem;
+  }
+  .hero-title em { font-style: italic; color: var(--clay); }
+
+  .hero-sub {
+    font-size: 1rem;
+    color: var(--umber);
+    max-width: 36ch;
+    margin-bottom: 2.5rem;
+    line-height: 1.8;
+  }
+
+  .btn-primary {
+    display: inline-block;
+    background: var(--bark);
+    color: var(--ivory);
+    text-decoration: none;
+    font-size: 0.78rem;
+    font-weight: 400;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 0.9rem 2.4rem;
+    border-radius: var(--radius);
+    border: 1px solid var(--bark);
+    transition: all var(--transition);
+    cursor: pointer;
+    font-family: var(--sans);
+  }
+  .btn-primary:hover { background: var(--umber); border-color: var(--umber); }
+
+  .btn-secondary {
+    display: inline-block;
+    background: transparent;
+    color: var(--bark);
+    text-decoration: none;
+    font-size: 0.78rem;
+    font-weight: 400;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 0.9rem 2.4rem;
+    border-radius: var(--radius);
+    border: 1px solid var(--bark);
+    transition: all var(--transition);
+    cursor: pointer;
+    font-family: var(--sans);
+  }
+  .btn-secondary:hover { background: var(--sand); }
+
+  .hero-image {
+    height: 100vh;
+    background: var(--sand);
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: saturate(0.85);
+  }
+  .hero-image::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to right, var(--sand) 0%, transparent 30%);
+  }
+
+  /* ── SECTION SHARED ── */
+  section { padding: 7rem 2rem; }
+  .section-inner { max-width: 1200px; margin: 0 auto; }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 4rem;
+  }
+  .section-eyebrow {
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--clay);
+    margin-bottom: 1rem;
+    display: block;
+  }
+  .section-title {
+    font-family: var(--serif);
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    font-weight: 300;
+    color: var(--bark);
+    line-height: 1.15;
+  }
+  .section-title em { font-style: italic; color: var(--clay); }
+  .section-divider {
+    width: 48px;
+    height: 1px;
+    background: var(--clay);
+    margin: 1.5rem auto 0;
+  }
+
+  /* ── SHOP ── */
+  #shop { background: var(--white); }
+
+  .filter-bar {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin-bottom: 3rem;
+  }
+  .filter-btn {
+    background: none;
+    border: 1px solid var(--fog);
+    border-radius: 100px;
+    padding: 0.4rem 1.2rem;
+    font-family: var(--sans);
+    font-size: 0.78rem;
+    font-weight: 400;
+    letter-spacing: 0.08em;
+    color: var(--umber);
+    cursor: pointer;
+    transition: all var(--transition);
+  }
+  .filter-btn:hover, .filter-btn.active {
+    background: var(--bark);
+    border-color: var(--bark);
+    color: var(--ivory);
+  }
+
+  .shop-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 2.5rem;
+  }
+
+  .product-card {
+    background: var(--ivory);
+    border-radius: 2px;
+    overflow: hidden;
+    transition: transform var(--transition);
+  }
+  .product-card:hover { transform: translateY(-4px); }
+
+  .product-image {
+    aspect-ratio: 3/4;
+    overflow: hidden;
+    position: relative;
+    background: var(--sand);
+  }
+  .product-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+    filter: saturate(0.9);
+  }
+  .product-card:hover .product-image img { transform: scale(1.04); }
+
+  .product-tag {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    background: var(--white);
+    font-size: 0.65rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--umber);
+    padding: 0.25rem 0.6rem;
+    border-radius: 2px;
+  }
+
+  .product-info { padding: 1.25rem 1rem; }
+  .product-name {
+    font-family: var(--serif);
+    font-size: 1.2rem;
+    font-weight: 400;
+    color: var(--bark);
+    margin-bottom: 0.3rem;
+    line-height: 1.3;
+  }
+  .product-desc {
+    font-size: 0.82rem;
+    color: var(--umber);
+    margin-bottom: 1rem;
+    line-height: 1.6;
+  }
+  .product-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .product-price {
+    font-family: var(--serif);
+    font-size: 1.1rem;
+    font-weight: 400;
+    color: var(--bark);
+  }
+
+  .add-btn {
+    background: none;
+    border: 1px solid var(--bark);
+    border-radius: var(--radius);
+    padding: 0.4rem 1rem;
+    font-family: var(--sans);
+    font-size: 0.72rem;
+    font-weight: 400;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--bark);
+    cursor: pointer;
+    transition: all var(--transition);
+  }
+  .add-btn:hover { background: var(--bark); color: var(--ivory); }
+  .add-btn.added { background: var(--sage); border-color: var(--sage); color: var(--white); }
+
+  /* ── ABOUT ── */
+  #about {
+    background: var(--sand);
+  }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    align-items: center;
+  }
+
+  .about-image {
+    aspect-ratio: 3/4;
+    border-radius: 2px;
+    overflow: hidden;
+    background: var(--fog);
+  }
+  .about-image img { width: 100%; height: 100%; object-fit: cover; filter: saturate(0.8); }
+
+  .about-eyebrow {
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--clay);
+    margin-bottom: 1.5rem;
+    display: block;
+  }
+  .about-title {
+    font-family: var(--serif);
+    font-size: clamp(2rem, 3.5vw, 2.8rem);
+    font-weight: 300;
+    line-height: 1.2;
+    color: var(--bark);
+    margin-bottom: 1.5rem;
+  }
+  .about-title em { font-style: italic; }
+  .about-text {
+    font-size: 0.95rem;
+    color: var(--umber);
+    line-height: 1.9;
+    margin-bottom: 1rem;
+  }
+  .about-signature {
+    font-family: var(--serif);
+    font-size: 1.8rem;
+    font-style: italic;
+    color: var(--clay);
+    margin-top: 2rem;
+  }
+
+  /* ── CONTACT ── */
+  #contact { background: var(--ivory); }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 6rem;
+    align-items: start;
+  }
+
+  .contact-info-title {
+    font-family: var(--serif);
+    font-size: 1.6rem;
+    font-weight: 400;
+    color: var(--bark);
+    margin-bottom: 1rem;
+  }
+  .contact-info-text {
+    font-size: 0.9rem;
+    color: var(--umber);
+    line-height: 1.9;
+    margin-bottom: 2rem;
+  }
+  .contact-detail {
+    display: flex;
+    gap: 0.75rem;
+    align-items: flex-start;
+    margin-bottom: 1rem;
+    font-size: 0.87rem;
+    color: var(--umber);
+  }
+  .contact-detail-label {
+    font-weight: 500;
+    color: var(--bark);
+    min-width: 80px;
+  }
+
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+  .form-group { margin-bottom: 1rem; }
+  .form-group label {
+    display: block;
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--umber);
+    margin-bottom: 0.5rem;
+  }
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    width: 100%;
+    background: var(--white);
+    border: 1px solid var(--fog);
+    border-radius: var(--radius);
+    padding: 0.75rem 1rem;
+    font-family: var(--sans);
+    font-size: 0.9rem;
+    font-weight: 300;
+    color: var(--bark);
+    outline: none;
+    transition: border-color var(--transition);
+  }
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus { border-color: var(--clay); }
+  .form-group textarea { resize: vertical; min-height: 130px; }
+  .form-group select { appearance: none; cursor: pointer; }
+
+  .form-success {
+    display: none;
+    text-align: center;
+    padding: 2rem;
+    background: var(--sand);
+    border-radius: var(--radius);
+    font-family: var(--serif);
+    font-size: 1.3rem;
+    color: var(--bark);
+  }
+
+  /* ── CART DRAWER ── */
+  .cart-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(61,43,26,0.4);
+    z-index: 200;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity var(--transition);
+  }
+  .cart-overlay.open { opacity: 1; pointer-events: all; }
+
+  .cart-drawer {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: var(--cart-w);
+    max-width: 100vw;
+    background: var(--ivory);
+    z-index: 201;
+    transform: translateX(100%);
+    transition: transform var(--transition);
+    display: flex;
+    flex-direction: column;
+  }
+  .cart-drawer.open { transform: translateX(0); }
+
+  .cart-header {
+    padding: 1.5rem 1.75rem;
+    border-bottom: 1px solid var(--fog);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-shrink: 0;
+  }
+  .cart-header-title {
+    font-family: var(--serif);
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: var(--bark);
+  }
+  .cart-close {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.4rem;
+    color: var(--umber);
+    line-height: 1;
+    padding: 0.25rem;
+  }
+
+  .cart-items {
+    flex: 1;
+    overflow-y: auto;
+    padding: 1.25rem 1.75rem;
+  }
+
+  .cart-empty {
+    text-align: center;
+    padding: 4rem 2rem;
+    font-family: var(--serif);
+    color: var(--umber);
+  }
+  .cart-empty-icon { font-size: 2.5rem; margin-bottom: 1rem; }
+  .cart-empty p { font-size: 1.1rem; font-style: italic; }
+
+  .cart-item {
+    display: grid;
+    grid-template-columns: 70px 1fr auto;
+    gap: 1rem;
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--fog);
+    align-items: center;
+  }
+  .cart-item-img {
+    width: 70px;
+    height: 88px;
+    object-fit: cover;
+    border-radius: 2px;
+    background: var(--sand);
+  }
+  .cart-item-name {
+    font-family: var(--serif);
+    font-size: 1.05rem;
+    color: var(--bark);
+    margin-bottom: 0.2rem;
+  }
+  .cart-item-price { font-size: 0.85rem; color: var(--umber); }
+
+  .cart-item-controls {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.5rem;
+  }
+  .qty-control {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    border: 1px solid var(--fog);
+    border-radius: var(--radius);
+    overflow: hidden;
+  }
+  .qty-btn {
+    background: none;
+    border: none;
+    width: 28px;
+    height: 28px;
+    cursor: pointer;
+    font-size: 1rem;
+    color: var(--umber);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background var(--transition);
+  }
+  .qty-btn:hover { background: var(--sand); }
+  .qty-num { font-size: 0.85rem; min-width: 20px; text-align: center; color: var(--bark); }
+
+  .remove-btn {
+    background: none;
+    border: none;
+    font-size: 0.7rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--clay);
+    cursor: pointer;
+    padding: 0;
+    font-family: var(--sans);
+  }
+  .remove-btn:hover { color: var(--bark); }
+
+  .cart-footer {
+    padding: 1.5rem 1.75rem;
+    border-top: 1px solid var(--fog);
+    flex-shrink: 0;
+    background: var(--white);
+  }
+  .cart-total-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 1.25rem;
+  }
+  .cart-total-label {
+    font-size: 0.78rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--umber);
+  }
+  .cart-total-amount {
+    font-family: var(--serif);
+    font-size: 1.6rem;
+    font-weight: 400;
+    color: var(--bark);
+  }
+  .checkout-btn {
+    width: 100%;
+    background: var(--bark);
+    color: var(--ivory);
+    border: none;
+    border-radius: var(--radius);
+    padding: 1rem;
+    font-family: var(--sans);
+    font-size: 0.8rem;
+    font-weight: 400;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background var(--transition);
+    margin-bottom: 0.75rem;
+  }
+  .checkout-btn:hover { background: var(--umber); }
+  .cart-note {
+    text-align: center;
+    font-size: 0.75rem;
+    color: var(--umber);
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--bark);
+    color: rgba(250,248,244,0.7);
+    padding: 4rem 2rem 2.5rem;
+  }
+  .footer-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .footer-top {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 4rem;
+    margin-bottom: 3rem;
+    padding-bottom: 3rem;
+    border-bottom: 1px solid rgba(250,248,244,0.15);
+  }
+  .footer-logo {
+    font-family: var(--serif);
+    font-size: 1.4rem;
+    font-weight: 300;
+    color: var(--ivory);
+    margin-bottom: 0.75rem;
+  }
+  .footer-tagline { font-size: 0.87rem; line-height: 1.7; }
+  .footer-col-title {
+    font-size: 0.7rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ivory);
+    margin-bottom: 1.25rem;
+  }
+  .footer-links { list-style: none; }
+  .footer-links li { margin-bottom: 0.6rem; }
+  .footer-links a {
+    text-decoration: none;
+    color: rgba(250,248,244,0.65);
+    font-size: 0.87rem;
+    transition: color var(--transition);
+  }
+  .footer-links a:hover { color: var(--ivory); }
+
+  .social-links { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .social-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    border: 1px solid rgba(250,248,244,0.25);
+    border-radius: 50%;
+    color: rgba(250,248,244,0.7);
+    text-decoration: none;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    transition: all var(--transition);
+  }
+  .social-link:hover { border-color: var(--clay); color: var(--clay); }
+
+  .footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.78rem;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  /* ── TOAST ── */
+  .toast {
+    position: fixed;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%) translateY(100px);
+    background: var(--bark);
+    color: var(--ivory);
+    padding: 0.75rem 1.5rem;
+    border-radius: 100px;
+    font-size: 0.82rem;
+    letter-spacing: 0.06em;
+    white-space: nowrap;
+    z-index: 300;
+    transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+    pointer-events: none;
+  }
+  .toast.show { transform: translateX(-50%) translateY(0); }
+
+  /* ── MOBILE NAV ── */
+  .mobile-menu {
+    display: none;
+    position: fixed;
+    inset: 0;
+    top: 68px;
+    background: var(--ivory);
+    z-index: 99;
+    padding: 3rem 2rem;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  .mobile-menu.open { display: flex; }
+  .mobile-menu a {
+    font-family: var(--serif);
+    font-size: 2rem;
+    font-weight: 300;
+    color: var(--bark);
+    text-decoration: none;
+    border-bottom: 1px solid var(--fog);
+    padding-bottom: 1rem;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    #home { grid-template-columns: 1fr; min-height: auto; }
+    .hero-image { height: 60vw; max-height: 420px; }
+    .hero-image::after { background: linear-gradient(to bottom, var(--sand), transparent 40%); }
+    .hero-text { padding: 3rem 1.5rem; order: 2; }
+
+    .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    .about-image { max-height: 400px; }
+
+    .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
+
+    .footer-top { grid-template-columns: 1fr 1fr; gap: 2rem; }
+
+    nav { display: none; }
+    .nav-hamburger { display: block; }
+  }
+
+  @media (max-width: 600px) {
+    section { padding: 4rem 1.25rem; }
+    .form-row { grid-template-columns: 1fr; }
+    .footer-top { grid-template-columns: 1fr; gap: 2rem; }
+    .footer-bottom { flex-direction: column; align-items: flex-start; }
+    :root { --cart-w: 100vw; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <a href="#home" class="logo">Sostika <span>Voss</span></a>
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#shop">Shop</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+    <button class="cart-btn" onclick="toggleCart()">
+      Bag
+      <span class="cart-count" id="cartCount">0</span>
+    </button>
+  </nav>
+  <div style="display:flex;align-items:center;gap:1rem;">
+    <button class="cart-btn" onclick="toggleCart()" style="display:none" id="mobileCartBtn">
+      Bag <span class="cart-count" id="cartCountMobile">0</span>
+    </button>
+    <button class="nav-hamburger" id="hamburger" onclick="toggleMobileMenu()" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#home" onclick="closeMobileMenu()">Home</a>
+  <a href="#shop" onclick="closeMobileMenu()">Shop</a>
+  <a href="#about" onclick="closeMobileMenu()">About</a>
+  <a href="#contact" onclick="closeMobileMenu()">Contact</a>
+  <button class="btn-primary" onclick="toggleCart();closeMobileMenu()" style="margin-top:1rem;text-align:center;">View Bag</button>
+</div>
+
+<!-- HERO -->
+<section id="home" style="padding:0;">
+  <div class="hero-text">
+    <p class="hero-eyebrow">Original works & handmade pieces</p>
+    <h1 class="hero-title">Where colour<br>finds its <em>voice</em></h1>
+    <p class="hero-sub">Each painting and craft emerges from long mornings in a light-filled studio in Utrecht, made slowly and with care.</p>
+    <div style="display:flex;gap:1rem;flex-wrap:wrap;">
+      <a href="#shop" class="btn-primary">Browse the shop</a>
+      <a href="#about" class="btn-secondary">My story</a>
+    </div>
+  </div>
+  <div class="hero-image">
+    <img src="https://picsum.photos/seed/studio/900/1100" alt="Artist at work">
+  </div>
+</section>
+
+<!-- SHOP -->
+<section id="shop">
+  <div class="section-inner">
+    <div class="section-header">
+      <span class="section-eyebrow">Original works</span>
+      <h2 class="section-title">The <em>collection</em></h2>
+      <div class="section-divider"></div>
+    </div>
+
+    <div class="filter-bar">
+      <button class="filter-btn active" onclick="filterProducts('all', this)">All</button>
+      <button class="filter-btn" onclick="filterProducts('painting', this)">Paintings</button>
+      <button class="filter-btn" onclick="filterProducts('craft', this)">Crafts</button>
+      <button class="filter-btn" onclick="filterProducts('print', this)">Prints</button>
+    </div>
+
+    <div class="shop-grid" id="shopGrid"></div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div class="about-image">
+        <img src="https://picsum.photos/seed/artist/600/800" alt="Sostika Collection in her studio">
+      </div>
+      <div>
+        <span class="about-eyebrow">The maker</span>
+        <h2 class="about-title">Painting from<br>the <em>inside out</em></h2>
+        <p class="about-text">I'm Sostika — a self-taught painter and maker based in Utrecht, the Netherlands. I've been painting since I could hold a brush, but it was only after moving into my own studio space that I found the courage to call it a practice.</p>
+        <p class="about-text">My work lives in the space between abstraction and the everyday — the golden hour light through kitchen windows, the weight of a rainy afternoon, the silence that follows a walk in the woods. I use a lot of earth tones and organic textures, letting the canvas breathe.</p>
+        <p class="about-text">Alongside the paintings, I make small handmade objects: woven pieces, hand-thrown ceramics, and paper goods — things that carry the same unhurried attention into ordinary life.</p>
+        <p class="about-text">I take on a small number of commissions each year. If you'd like a piece made for a specific space or occasion, I'd love to hear from you.</p>
+        <div class="about-signature">Sostika</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-inner">
+    <div class="section-header">
+      <span class="section-eyebrow">Commission a piece</span>
+      <h2 class="section-title">Let's <em>make</em> something</h2>
+      <div class="section-divider"></div>
+    </div>
+
+    <div class="contact-grid">
+      <div>
+        <h3 class="contact-info-title">Commission requests</h3>
+        <p class="contact-info-text">I take on a limited number of commissions each year to keep the work personal and unhurried. Turnaround is typically 6–10 weeks depending on size and complexity.</p>
+        <div class="contact-detail">
+          <span class="contact-detail-label">Studio</span>
+          <span>Utrecht, the Netherlands</span>
+        </div>
+        <div class="contact-detail">
+          <span class="contact-detail-label">Email</span>
+          <span>hello@sostikacollection.nl</span>
+        </div>
+        <div class="contact-detail">
+          <span class="contact-detail-label">Shipping</span>
+          <span>Netherlands & EU — international on request</span>
+        </div>
+        <div class="contact-detail">
+          <span class="contact-detail-label">Response</span>
+          <span>Within 3 working days</span>
+        </div>
+      </div>
+
+      <div>
+        <form id="contactForm" onsubmit="handleFormSubmit(event)">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="firstName">First name</label>
+              <input type="text" id="firstName" placeholder="Anna" required>
+            </div>
+            <div class="form-group">
+              <label for="lastName">Last name</label>
+              <input type="text" id="lastName" placeholder="de Vries" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" placeholder="anna@example.com" required>
+          </div>
+          <div class="form-group">
+            <label for="commissionType">Type of work</label>
+            <select id="commissionType">
+              <option value="">Select a type…</option>
+              <option>Original painting</option>
+              <option>Print on paper</option>
+              <option>Woven piece</option>
+              <option>Ceramic object</option>
+              <option>Something else</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="message">Tell me about the piece</label>
+            <textarea id="message" placeholder="Size, colours, the space it's for, any reference images you love…" required></textarea>
+          </div>
+          <button type="submit" class="btn-primary" style="width:100%;text-align:center;">Send request</button>
+        </form>
+        <div class="form-success" id="formSuccess">
+          <div style="font-size:2rem;margin-bottom:1rem;">✦</div>
+          <p>Thank you — I'll be in touch within a few days.</p>
+          <p style="font-family:var(--serif);font-style:italic;font-size:0.9rem;margin-top:0.5rem;color:var(--umber);">— Sostika</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <div class="footer-logo">Sostika Collection</div>
+        <p class="footer-tagline">Original paintings and handmade objects from a studio in Utrecht. Made slowly, with care.</p>
+      </div>
+      <div>
+        <p class="footer-col-title">Navigate</p>
+        <ul class="footer-links">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#shop">Shop</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#contact">Commissions</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="footer-col-title">Follow</p>
+        <div class="social-links">
+          <a href="#" class="social-link" aria-label="Instagram">Ig</a>
+          <a href="#" class="social-link" aria-label="Pinterest">Pi</a>
+          <a href="#" class="social-link" aria-label="Facebook">Fb</a>
+          <a href="#" class="social-link" aria-label="Email">@</a>
+        </div>
+        <p style="font-size:0.78rem;margin-top:1.25rem;">@sostikacollection</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 Sostika Collection. All rights reserved.</p>
+      <p>Utrecht, the Netherlands</p>
+    </div>
+  </div>
+</footer>
+
+<!-- CART OVERLAY + DRAWER -->
+<div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
+
+<div class="cart-drawer" id="cartDrawer">
+  <div class="cart-header">
+    <span class="cart-header-title">Your bag</span>
+    <button class="cart-close" onclick="toggleCart()" aria-label="Close cart">✕</button>
+  </div>
+  <div class="cart-items" id="cartItems">
+    <div class="cart-empty" id="cartEmpty">
+      <div class="cart-empty-icon">◡</div>
+      <p>Your bag is empty</p>
+    </div>
+  </div>
+  <div class="cart-footer" id="cartFooter" style="display:none;">
+    <div class="cart-total-row">
+      <span class="cart-total-label">Total</span>
+      <span class="cart-total-amount" id="cartTotal">€0</span>
+    </div>
+    <button class="checkout-btn" onclick="handleCheckout()">Proceed to checkout</button>
+    <p class="cart-note">Free shipping on orders over €150 within the EU</p>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+<script>
+const products = [
+  { id: 1, name: 'Golden Hour, Utrecht', category: 'painting', price: 380, desc: 'Oil on linen, 50×70 cm. Warm amber light across rooftops.', img: 'https://picsum.photos/seed/paint1/480/640', tag: 'Painting' },
+  { id: 2, name: 'Rain Study No. 4', category: 'painting', price: 245, desc: 'Watercolour on paper, 30×40 cm. Framed in natural oak.', img: 'https://picsum.photos/seed/paint2/480/640', tag: 'Painting' },
+  { id: 3, name: 'Woven Wall Hanging', category: 'craft', price: 120, desc: 'Hand-woven merino and linen, 35×55 cm. Natural dyes.', img: 'https://picsum.photos/seed/craft1/480/640', tag: 'Craft' },
+  { id: 4, name: 'Still Life with Pears', category: 'painting', price: 420, desc: 'Oil on board, 40×50 cm. Warm, intimate composition.', img: 'https://picsum.photos/seed/paint3/480/640', tag: 'Painting' },
+  { id: 5, name: 'Forest Floor Print', category: 'print', price: 65, desc: 'Giclée on 300g cotton rag, 21×29.7 cm. Edition of 30.', img: 'https://picsum.photos/seed/print1/480/640', tag: 'Print' },
+  { id: 6, name: 'Hand-thrown Vase', category: 'craft', price: 88, desc: 'Stoneware with ash glaze, approx. 18 cm tall.', img: 'https://picsum.photos/seed/craft2/480/640', tag: 'Craft' },
+  { id: 7, name: 'Morning Light Abstract', category: 'painting', price: 560, desc: 'Oil on canvas, 70×90 cm. Large format, unframed.', img: 'https://picsum.photos/seed/paint4/480/640', tag: 'Painting' },
+  { id: 8, name: 'Botanical Riso Print', category: 'print', price: 38, desc: 'Two-colour risograph on cream paper, A4. Ed. of 50.', img: 'https://picsum.photos/seed/print2/480/640', tag: 'Print' },
+];
+
+let cart = {};
+let mobileMenuOpen = false;
+
+function renderProducts(filter='all') {
+  const grid = document.getElementById('shopGrid');
+  const filtered = filter === 'all' ? products : products.filter(p => p.category === filter);
+  grid.innerHTML = filtered.map(p => `
+    <div class="product-card" data-cat="${p.category}">
+      <div class="product-image">
+        <img src="${p.img}" alt="${p.name}" loading="lazy">
+        <span class="product-tag">${p.tag}</span>
+      </div>
+      <div class="product-info">
+        <h3 class="product-name">${p.name}</h3>
+        <p class="product-desc">${p.desc}</p>
+        <div class="product-footer">
+          <span class="product-price">€${p.price}</span>
+          <button class="add-btn" id="addBtn${p.id}" onclick="addToCart(${p.id})">Add to bag</button>
+        </div>
+      </div>
+    </div>
+  `).join('');
+  updateAddBtnStates();
+}
+
+function filterProducts(cat, btn) {
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  renderProducts(cat);
+}
+
+function addToCart(id) {
+  const p = products.find(x => x.id === id);
+  if (cart[id]) { cart[id].qty++; } else { cart[id] = { ...p, qty: 1 }; }
+  updateCartUI();
+  showToast(`"${p.name}" added to bag`);
+  updateAddBtnStates();
+}
+
+function changeQty(id, delta) {
+  if (!cart[id]) return;
+  cart[id].qty += delta;
+  if (cart[id].qty <= 0) delete cart[id];
+  updateCartUI();
+  updateAddBtnStates();
+}
+
+function removeFromCart(id) {
+  delete cart[id];
+  updateCartUI();
+  updateAddBtnStates();
+}
+
+function updateAddBtnStates() {
+  products.forEach(p => {
+    const btn = document.getElementById('addBtn' + p.id);
+    if (!btn) return;
+    if (cart[p.id]) {
+      btn.textContent = `In bag (${cart[p.id].qty})`;
+      btn.classList.add('added');
+    } else {
+      btn.textContent = 'Add to bag';
+      btn.classList.remove('added');
+    }
+  });
+}
+
+function updateCartUI() {
+  const items = Object.values(cart);
+  const total = items.reduce((s, i) => s + i.price * i.qty, 0);
+  const count = items.reduce((s, i) => s + i.qty, 0);
+
+  const countEls = document.querySelectorAll('.cart-count');
+  countEls.forEach(el => {
+    el.textContent = count;
+    el.classList.toggle('visible', count > 0);
+  });
+
+  const container = document.getElementById('cartItems');
+  const empty = document.getElementById('cartEmpty');
+  const footer = document.getElementById('cartFooter');
+
+  if (items.length === 0) {
+    empty.style.display = 'block';
+    footer.style.display = 'none';
+    container.innerHTML = '';
+    container.appendChild(empty);
+    return;
+  }
+
+  empty.style.display = 'none';
+  footer.style.display = 'block';
+
+  container.innerHTML = items.map(item => `
+    <div class="cart-item">
+      <img class="cart-item-img" src="${item.img}" alt="${item.name}">
+      <div>
+        <p class="cart-item-name">${item.name}</p>
+        <p class="cart-item-price">€${item.price} each</p>
+      </div>
+      <div class="cart-item-controls">
+        <div class="qty-control">
+          <button class="qty-btn" onclick="changeQty(${item.id}, -1)">−</button>
+          <span class="qty-num">${item.qty}</span>
+          <button class="qty-btn" onclick="changeQty(${item.id}, 1)">+</button>
+        </div>
+        <button class="remove-btn" onclick="removeFromCart(${item.id})">Remove</button>
+      </div>
+    </div>
+  `).join('');
+
+  document.getElementById('cartTotal').textContent = '€' + total.toLocaleString('nl-NL');
+}
+
+function toggleCart() {
+  const drawer = document.getElementById('cartDrawer');
+  const overlay = document.getElementById('cartOverlay');
+  drawer.classList.toggle('open');
+  overlay.classList.toggle('open');
+  document.body.style.overflow = drawer.classList.contains('open') ? 'hidden' : '';
+}
+
+function handleCheckout() {
+  showToast('Checkout coming soon — contact me directly!');
+  setTimeout(toggleCart, 400);
+}
+
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  clearTimeout(t._timer);
+  t._timer = setTimeout(() => t.classList.remove('show'), 2800);
+}
+
+function handleFormSubmit(e) {
+  e.preventDefault();
+  document.getElementById('contactForm').style.display = 'none';
+  document.getElementById('formSuccess').style.display = 'block';
+}
+
+function toggleMobileMenu() {
+  mobileMenuOpen = !mobileMenuOpen;
+  document.getElementById('mobileMenu').classList.toggle('open', mobileMenuOpen);
+  document.body.style.overflow = mobileMenuOpen ? 'hidden' : '';
+  const btns = document.querySelectorAll('.nav-hamburger span');
+  if (mobileMenuOpen) {
+    btns[0].style.transform = 'translateY(6.5px) rotate(45deg)';
+    btns[1].style.opacity = '0';
+    btns[2].style.transform = 'translateY(-6.5px) rotate(-45deg)';
+  } else {
+    btns.forEach(b => { b.style.transform = ''; b.style.opacity = ''; });
+  }
+}
+
+function closeMobileMenu() {
+  mobileMenuOpen = false;
+  document.getElementById('mobileMenu').classList.remove('open');
+  document.body.style.overflow = '';
+  document.querySelectorAll('.nav-hamburger span').forEach(b => { b.style.transform=''; b.style.opacity=''; });
+}
+
+// show mobile cart btn on small screens
+function checkMobileCartBtn() {
+  const isMobile = window.innerWidth <= 900;
+  document.getElementById('mobileCartBtn').style.display = isMobile ? 'flex' : 'none';
+}
+window.addEventListener('resize', checkMobileCartBtn);
+checkMobileCartBtn();
+
+renderProducts();
+</script>
+</body>
+</html>
